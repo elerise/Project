@@ -6,8 +6,9 @@ namespace DP9Connector
 {
     public class WIGConnector : IDisposable
     {
-        string url = "http://192.168.167.53:10110/";
-        string boundary = "asdlfkjiurwghasf";
+        string template = "--{0}--[1}--{2}--{3}--";
+        string url = "http://192.168.0.0:10000/";
+        string boundary = "aaaaaaaaaaa";
         WebClient client = new WebClient();
 
         public WIGConnector(string url)
@@ -19,7 +20,7 @@ namespace DP9Connector
             client.Headers = GetHeaders();
         }
 
-        public string DSTKSend(string msisdn, string message, string link)
+        public string MessageSend(string msisdn, string message, string link)
         {
             string request = GetRequest(msisdn, message, link);
             var content = client.Encoding.GetBytes(request);
@@ -29,7 +30,7 @@ namespace DP9Connector
 
         private string GetRequest(string msisdn, string text, string url)
         {
-            return string.Format(Resources.DSTKTemplate, msisdn, text, url, boundary);
+            return string.Format(template, msisdn, text, url, boundary);
         }
 
         private WebHeaderCollection GetHeaders()
@@ -39,8 +40,8 @@ namespace DP9Connector
             webHeaders.Add(HttpRequestHeader.AcceptCharset, "iso-8859-1;UTF-8");
             webHeaders.Add(HttpRequestHeader.AcceptEncoding, "identity");
             webHeaders.Add(HttpRequestHeader.AcceptLanguage, string.Empty);
-            webHeaders.Add(HttpRequestHeader.UserAgent, "WIG Browser/1.1");
-            webHeaders.Add(HttpRequestHeader.Host, "10.77.1.7:5008");
+            webHeaders.Add(HttpRequestHeader.UserAgent, "Test Browser/1.1");
+            webHeaders.Add(HttpRequestHeader.Host, "1.1.1.1:01");
             webHeaders.Add(HttpRequestHeader.ContentType, "multipart/form-data; boundary=" + boundary + "; type=\"application/xml\"");
             return webHeaders;
         }
@@ -51,3 +52,4 @@ namespace DP9Connector
         }
     }
 }
+

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 
-namespace Auxiliary
+namespace Utils
 {
     public static class AssemblyUtils
     {
@@ -21,3 +21,4 @@ namespace Auxiliary
 
     }
 }
+

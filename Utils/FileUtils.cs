@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace Auxiliary
+namespace Utils
 {
     /// <summary>
     /// Simplified file management
@@ -59,3 +59,4 @@ namespace Auxiliary
         }
     }
 }
+
